@@ -12,7 +12,7 @@ Official commands follow:
 
 I will continue to add more commands that get requested :)
 
-Bug Fix (8.09.2026 18:00) :
+Bug Fix (8.09.2026 19:27) :
  +  Fixed the bug where is would say app not responding but the commands appear late. Now it shows immediately !
 
 
