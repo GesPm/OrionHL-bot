@@ -1,5 +1,4 @@
 const axios = require("axios");
-
 require("dotenv").config();
 
 const { App } = require("@slack/bolt");
@@ -10,20 +9,23 @@ const app = new App({
   socketMode: true
 });
 
-app.command("/orionhl-ping", async ({ command, ack, respond }) => {
+app.command("/orionhl-ping", async ({ ack, respond }) => {
   const start = Date.now();
+
   await ack();
+
   const latency = Date.now() - start;
-  await respond({ text: `Pong!\nLatency: ${latency}ms` });
+
+  await respond({
+    text: `Pong!\nLatency: ${latency}ms`
+  });
 });
 
 app.command("/orionhl-help", async ({ ack, respond }) => {
   await ack();
+
   await respond({
-    text:
-`Available Commands:
-/orionhl-ping - Check bot latency
-/orionhl-catfact - Get a cat fact`
+    text: "Available Commands:\n/orionhl-ping - Check bot latency\n/orionhl-catfact - Get a cat fact"
   });
 });
 
@@ -31,12 +33,21 @@ app.command("/orionhl-catfact", async ({ ack, respond }) => {
   await ack();
 
   try {
-    const response = await axios.get("https://catfact.ninja/fact");
-    await respond({ text: `Cat Fact:\n${response.data.fact}` });
+    const response = await axios.get("https://catfact.ninja/fact", {
+      timeout: 5000
+    });
+
+    await respond({
+      text: `Cat Fact:\n${response.data.fact}`
+    });
   } catch (err) {
-    await respond({ text: "Failed to fetch a cat fact." });
+    console.error(err.message);
+
+    await respond({
+      text: "Failed to fetch a cat fact."
+    });
   }
-})
+});
 
 (async () => {
   await app.start();
