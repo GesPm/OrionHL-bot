@@ -38,7 +38,7 @@ app.command("/orionhl-catfact", async ({ ack, respond }) => {
   }
 })
 
-;(async () => {
+(async () => {
   await app.start();
   console.log("bot is running!");
 })();
