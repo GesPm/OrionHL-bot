@@ -12,10 +12,7 @@ Official commands follow:
 
 I will continue to add more commands that get requested :)
 
-!IMPORTANT!
-Currently I cannot figure out why, but when commands ( excluding ping command ) are used it says app did not respond.
-
-!!For the commands to work you need to wait about 3-5 seconds!!
+Bug Fix (8.09.2026 18:00) :
+ +  Fixed the bug where is would say app not responding but the commands appear late. Now it shows immediately !
 
 
-I will try to fix this as soon as I can!
